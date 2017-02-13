@@ -265,6 +265,13 @@ textarea {
     padding: 10px 0;
     box-shadow: 2px 2px 6px #a0a0a0;
     color: #2196f3;
+    cursor: pointer;
+}
+.disabled {
+    pointer-events: none;
+    background-color: #d0d0d0 !important;
+    color: #909090 !important;
+    border: 2px solid #a0a0a0 !important;
 }
 
 /********* media ************/

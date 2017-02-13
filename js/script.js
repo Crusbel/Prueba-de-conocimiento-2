@@ -51,3 +51,41 @@ function input_focus(input) {
         }
     });
 }
+
+function input_required(input) {
+    var $selector = $('#'+input);
+    var condition = false;
+    
+        if ($selector.val() != '') {
+            if ($selector.val().length < 4) {
+                condition = false;
+            } else {
+                condition = true;
+            }
+        } else {
+            condition = false;
+        }
+
+    return condition;
+}
+
+function enabled_button(input1, input2, input3, input4) {
+    var $button = $('#btn_submit');
+    var regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    
+    var val_email = regex.test($('#email').val());
+
+    if (input1 && input2 && input3 && input4 && val_email) {
+        $button.removeClass('disabled');
+    } else {
+        $button.addClass('disabled');
+    }  
+}
+
+$('.keyup_input').on('keyup blur', function () {
+    var username = input_required('username');
+    var email = input_required('email');
+    var password = input_required('password');
+    var message = input_required('message');
+   enabled_button(username, email, password, message); 
+});
