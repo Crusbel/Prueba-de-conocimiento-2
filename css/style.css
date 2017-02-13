@@ -25,6 +25,7 @@ body {
     display: flex;
     -ms-flex-flow: row wrap;
     flex-flow: row wrap; 
+    margin-bottom: 20px;
 }
 .nav_size, .item_content_main, .form_size, .search_size{
     -ms-flex: 0 0 100%;
@@ -188,12 +189,26 @@ div#my_slider div {
 }
 
 /************** form ****************/
+.input_group_search{
+    height: 50px;
+    width: 80%;
+    margin-top: 5px;
+    position: relative;
+    margin-bottom: 5px;
+}
 .input_group {
     position: relative;
     height: 25px;
     margin-bottom: 10px;
 }
-.input_group input {
+.input_group_message {
+    height: 120px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.input_group input, 
+.input_group_message textarea,
+.input_group_search input {
     position: absolute;
     width: 80%;
     right: 0;
@@ -201,8 +216,12 @@ div#my_slider div {
     border-style: solid;
     height: 100%;
     outline: none;
+    color: #4CAF50;
+    padding-left: 10px;
 }
-.input_group label {
+.input_group label,
+.input_group_message label,
+.input_group_search label {
     background: #2196F3;
     width: 100%;
     position: absolute;
@@ -214,11 +233,87 @@ div#my_slider div {
     z-index: 1;
     text-align: center;
 }
-.input_group:hover label {
+.input_group_search label{
+    font-size: 1em;
+    line-height: 50px;
+}
+.input_group:hover label,
+.input_group_message:hover label,
+.input_group_search:hover label {
     width: 20%;
     transition: 0.7s;
 }
-.input_group input[type="text"]:focus + label {
+textarea {
+    border-width: 2px;
+}
+.input_group input:focus + label,
+.input_group input.focused + label,
+.input_group_search input:focus + label,
+.input_group_search input.focused + label,
+.input_group_message textarea:focus + label,
+.input_group_message textarea.focused + label {
     width: 20%;
     transition: 0.7s;
+}
+.input_group_button{
+    text-align: center;
+}
+.input_group_button button {
+    width: 40%;
+    border: 2px solid #2196f3;
+    background-color: #ffffff;
+    padding: 10px 0;
+    box-shadow: 2px 2px 6px #a0a0a0;
+    color: #2196f3;
+}
+
+/********* media ************/
+
+@media print, screen and (max-width: 42em) {
+    /**** nav ****/
+    .nav_menu ul li {
+        display: block;
+        width: 100%;
+        position: relative;
+    }
+    .nav_menu ul li a {
+        width: 100%;
+        display: inline-block;
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+    .dropdown {
+        position: inherit;
+        overflow: inherit;
+        transition: inherit;
+        width: 100%;
+        z-index: 40;
+    }
+    .dropdown div {
+        margin: 0;
+        box-shadow: none;
+        transform: none;
+        background: #ffffff;
+        transition: inherit;
+    }
+    .nav_menu ul li:hover div {
+        transform: none;
+        transition: inherit;
+    }
+    .dropdown div li a {
+        text-align: center;
+        font-size: 0.8em;
+        padding-left: 0;
+        color: #4CAF50;
+    }
+    .mark{
+        display: none;
+    }
+    /***** slider ******/
+    .content_slider {
+        height: 300px;
+    }
+    div#my_slider div {
+        height: 300px;
+    }
 }
