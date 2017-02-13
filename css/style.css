@@ -1,0 +1,224 @@
+html {
+  box-sizing: border-box;
+  font-size: 100%; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #fefefe;
+    font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+}
+.row {
+    margin-right: auto;
+    margin-left: auto;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap; 
+}
+.nav_size, .item_content_main, .form_size, .search_size{
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%; 
+}
+
+@media print, screen and (min-width: 40em) {
+    .form_size {
+        margin-left: 25%;
+    } 
+    .item_content_main, .form_size {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%; 
+    } 
+    .nav_size, .search_size {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%; 
+    } 
+}
+
+@media print, screen and (min-width: 64em) {
+    .item_content_main, .form_size, .search_size {
+        -ms-flex: 0 0 33.33333%;
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%; 
+    }
+    .form_size {
+        margin-left: 33.33333%; 
+    }
+    .nav_size{
+        -ms-flex: 0 0 66.66667%;
+        flex: 0 0 66.66667%;
+        max-width: 66.66667%; 
+    }
+}
+a {
+    text-decoration: none;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+/***************** nav ******************/
+.content_nav {
+    margin-bottom: 40px;
+}
+.nav_menu {
+    position: relative;
+}
+.nav_menu ul li {
+    display: inline-block;
+    width: 19.45555%;
+    position: relative;
+}
+.nav_menu ul li a {
+    color: #2196F3;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.dropdown {
+    position: absolute;
+    overflow: hidden;
+    transition: 0.7s;
+    width: 100%;
+    z-index: 40;
+}
+.dropdown div {
+    margin: 0 5px 8px 5px;
+    box-shadow: 0px 3px 5px #464646;
+    transform: translateY(-105%);
+    background: #ffffff;
+    transition: 0.7s;
+}
+.nav_menu ul li:hover div {
+    transform: translateY(0);
+    transition: 0.7s;
+}
+.dropdown div li {
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+.dropdown div li a {
+    width: 100%;
+    display: block;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    color: #2196F3;
+    text-align: left;
+}
+.dropdown div li:hover {
+    background: #2196F3;
+    cursor: pointer;
+}
+.dropdown div li:hover a {
+     color: #ffffff; 
+}
+.mark {
+    position: absolute;
+    background: #2196F3;
+    height: 2px;
+    width: 20%;
+    transition: 0.7s;
+    bottom: 0;
+}
+.nav_menu ul li:nth-child(2):hover ~ .mark {
+    transform: translateX(100%);
+    transition: 0.7s;
+}
+.nav_menu ul li:nth-child(3):hover ~ .mark {
+    transform: translateX(200%);
+    transition: 0.7s;
+}
+.nav_menu ul li:nth-child(4):hover ~ .mark {
+    transform: translateX(300%);
+    transition: 0.7s;
+}
+.nav_menu ul li:nth-child(5):hover ~ .mark {
+    transform: translateX(400%);
+    transition: 0.7s;
+}
+
+/***************** slider *****************/
+.content_slider{
+    position: relative;
+    height: 450px;
+    overflow-x: hidden;
+}
+div#my_slider {
+    width: 100vw;
+    display: table;
+    position: absolute;
+}
+div#my_slider div {
+    height: 450px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: table-cell;
+}
+
+/*********** content ***********/
+.item_content_main {
+    padding: 10px;
+}
+.item_content_main div {
+    box-shadow: 0px 2px 7px rgba(33, 150, 243, 0.67);
+    padding: 10px 20px;
+}
+.item_content_main div p {
+    text-align: justify;
+    color: #2196f3;
+}
+
+/************** form ****************/
+.input_group {
+    position: relative;
+    height: 25px;
+    margin-bottom: 10px;
+}
+.input_group input {
+    position: absolute;
+    width: 80%;
+    right: 0;
+    border-color: #2196F3;
+    border-style: solid;
+    height: 100%;
+    outline: none;
+}
+.input_group label {
+    background: #2196F3;
+    width: 100%;
+    position: absolute;
+    color: #ffffff;
+    font-size: 0.8em;
+    height: 100%;
+    transition: 0.7s;
+    line-height: 25px;
+    z-index: 1;
+    text-align: center;
+}
+.input_group:hover label {
+    width: 20%;
+    transition: 0.7s;
+}
+.input_group input[type="text"]:focus + label {
+    width: 20%;
+    transition: 0.7s;
+}
