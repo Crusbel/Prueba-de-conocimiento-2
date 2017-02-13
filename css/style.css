@@ -273,6 +273,38 @@ textarea {
     color: #909090 !important;
     border: 2px solid #a0a0a0 !important;
 }
+/************ modal ***********/
+.modal_message {
+    position: fixed;
+    background: #ffffff;
+    top: 50%;
+    width: 40%;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid #2196F3;
+    box-shadow: 0px 3px 6px #88c1ef;
+    z-index: 100;
+}
+.modal_message h4 {
+    text-transform: uppercase;
+    border-bottom: 2px solid #2196F3;
+    padding-bottom: 15px;
+    color: #4CAF50;
+}
+.modal_message p {
+    color: #4CAF50;
+    text-transform: capitalize;
+    text-align: left;
+    padding-left: 25px;
+    font-weight: bold;
+}
+.modal_message p span {
+    padding-left: 30px;
+    font-weight: normal;
+    font-size: 0.9em;
+    color: #2196F3;
+}
 
 /********* media ************/
 
@@ -322,5 +354,9 @@ textarea {
     }
     div#my_slider div {
         height: 300px;
+    }
+    /****** modal ******/
+    .modal_message {
+        width: 80%;
     }
 }

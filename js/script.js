@@ -3,14 +3,65 @@ var id_slider = "#my_slider";
 var slider_width_init = $(id_slider).width();
 var index_slider = 0; 
 
-
-
 input_focus('username');
 input_focus('email');
 input_focus('password');
 input_focus('message');
 input_focus('search');
 
+$('#my_form').submit(function(ev) { 
+    ev.preventDefault();
+
+    var myemail = $('#email').val();
+    var myusername = $('#username').val();
+    var mypassword = $('#password').val();
+    var mymessage = $('#message').val();
+
+    var formData = new FormData();
+    formData.append("email", myemail);
+    formData.append("username", myusername);
+    formData.append("password", mypassword);
+    formData.append("message", mymessage);
+
+
+    $.ajax({
+        async: true,
+        crossDomain: true,
+        url: "http://test.masuno.pe/form.php",
+        method: "POST",
+        headers: {},
+        processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+        data: formData,
+        dataType: "json",
+            success: function (response) {
+                console.log(response);
+                if (response.status_code === 0) {
+                    var template = '<div class="modal_message">';
+                        template += '<h4>Success !!</h4>';
+                        template += '<p>Your Username :</p><p><span>'+response.data.username+'</span></p>';
+                        template += '<p>Your Email :</p><p><span>'+response.data.email+'</span></p>';
+                        template += '<p>Your Password :</p><p><span>'+response.data.password+'</span></p>';
+                        template += '<p>Your Message :</p><p><span>'+response.data.message+'</span></p>';
+                        template += '</div>';     
+                    $('.modal').html(template).fadeIn('slow');  
+                    clear_input();
+                    $(document).mouseup(function (e){
+                            var container = $(".modal_message");
+                            if (!container.is(e.target) && container.has(e.target).length === 0)
+                                $(".modal_message").fadeOut('slow');                     
+                        });             
+                } else {
+                    var template = '<div class="modal_message">';
+                        template += '<h4>Houston, we have a problem !!</h4>';
+                        template += '</div>';     
+                    $('.modal').html(template);      
+                    clear_input();
+                }
+            }
+        });
+});
 
 $.ajax({
     type: "GET",
@@ -25,6 +76,9 @@ $.ajax({
         setInterval('animate_slider()',3000);     
     }
 });
+
+
+
 
 function mySlider() {
     var slider_elements = 0;
@@ -80,6 +134,12 @@ function enabled_button(input1, input2, input3, input4) {
     } else {
         $button.addClass('disabled');
     }  
+}
+
+function clear_input() {
+    $('.keyup_input').val('');
+    $('.keyup_input').removeClass('focused');
+    $('#btn_submit').addClass('disabled');
 }
 
 $('.keyup_input').on('keyup blur', function () {
